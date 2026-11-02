@@ -9,7 +9,6 @@ class RolePermissionsManager:
         self.roles_data = self._load_json(self.roles_path).get("roles", {})
         self.users_data = self._load_json(self.users_path).get("users", [])
         
-        # Dictionary hash map for O(1) user lookup
         self.user_map = {u["user_id"]: u for u in self.users_data}
 
     def _load_json(self, filepath):
@@ -51,7 +50,6 @@ class RolePermissionsManager:
         old_role = target_user["role"]
         target_user["role"] = new_role
         
-        # Generate append-only audit log record
         log_entry = {
             "actor_id": actor_id,
             "target_user_id": target_user_id,
@@ -69,18 +67,15 @@ if __name__ == "__main__":
     print("=== Milestone 1 Verification Demo ===")
     user_id = "usr_001"
     
-    # 1. Lookup user & role
     role, _ = manager.get_user_role(user_id)
     print(f"User '{user_id}' current role: {role}")
     
-    # 2. Check permission
     allowed, msg = manager.check_permission(user_id, "read_findings")
     print(f"Check 'read_findings': {allowed} ({msg})")
     
     allowed, msg = manager.check_permission(user_id, "sign_off_clearance")
     print(f"Check 'sign_off_clearance': {allowed} ({msg})")
     
-    # 3. Assign new role & generate audit record
     success, log = manager.assign_role("admin_01", "usr_001", "approver")
     print(f"Assign 'approver' status: {success}")
     print(f"Audit Log Record Generated: {json.dumps(log, indent=2)}")
