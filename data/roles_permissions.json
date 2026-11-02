@@ -1,0 +1,33 @@
+{
+  "roles": {
+    "reviewer": {
+      "name": "Reviewer",
+      "description": "Examines license findings and copyright notices",
+      "permissions": [
+        "read_findings",
+        "examine_license",
+        "add_comments"
+      ]
+    },
+    "approver": {
+      "name": "Approver",
+      "description": "Signs off on legal compliance clearance decisions",
+      "permissions": [
+        "read_findings",
+        "examine_license",
+        "add_comments",
+        "sign_off_clearance",
+        "approve_decision"
+      ]
+    },
+    "auditor": {
+      "name": "Auditor",
+      "description": "Verifies historical compliance records and tracks access logs",
+      "permissions": [
+        "read_findings",
+        "view_audit_log",
+        "export_reports"
+      ]
+    }
+  }
+}
