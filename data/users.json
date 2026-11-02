@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "user_id": "usr_001",
+      "username": "harshit_yadav",
+      "email": "harshit@example.com",
+      "role": "reviewer"
+    },
+    {
+      "user_id": "usr_002",
+      "username": "legal_approver",
+      "email": "approver@example.com",
+      "role": "approver"
+    },
+    {
+      "user_id": "usr_003",
+      "username": "compliance_auditor",
+      "email": "auditor@example.com",
+      "role": "auditor"
+    }
+  ]
+}
